@@ -1,3 +1,5 @@
+// import "./main.css"
+
 export default function Main({text, children, data = {}}){
     return (
         <main className="main" id="viewport" style={{fontSize: '1rem'}}>
@@ -8,7 +10,7 @@ export default function Main({text, children, data = {}}){
             <br/>
             {children}
             <br/>
-            {data || 'data.name is empty'}
+            {typeof data !== 'undefined' ? data : 'data.name is empty'}
         </main>
     )
 }

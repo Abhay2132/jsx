@@ -1,12 +1,13 @@
 import Main from "./main"
+import Head from "./head";
 
-export default function ROOT ({data}){
+export default function ROOT ({data={}}){
     return (<html lang='en'>
-        <head>
+        <Head>
             <title>JSX Complier</title>
-        </head>
+        </Head>
         <body>
-            <Main text='India is Great' data={data}>
+            <Main text='India is Great...' data={data}>
                 I am Abhay Bisht
             </Main>
         </body>

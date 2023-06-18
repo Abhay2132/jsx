@@ -20,9 +20,10 @@ function parseChildren(children = []) {
     return body;
 }
 
-function jsx(name = "", options = {}) {
+function _jsx(name = "", options = {}){//, ...children) {
+    // if(!options) options = {}
     if (typeof name == 'function') return name(options);
-    const { children = '' } = options;
+    const { children = '' } = options || {};
     if (options.hasOwnProperty('children')) delete options.children;
     let attrStr = ''
     for (let key in options) {
@@ -36,7 +37,10 @@ function jsx(name = "", options = {}) {
     if(openTags.includes(name)) return `<${name}${attrStr}/>`
     return `<${name}${attrStr}>${body}</${name}>`
 }
-module.exports = {
-    jsx,
-    jsxs: jsx
-}
+// module.exports = {
+//     jsx,
+//     jsxs: jsx
+// }
+
+export const jsx = _jsx
+export const jsxs = _jsx
