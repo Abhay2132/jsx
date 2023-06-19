@@ -1,6 +1,7 @@
 {
   "name": "jsx",
   "version": "1.0.0",
+  "type": "module",
   "description": "",
   "main": "bin/index.js",
   "scripts": {
@@ -11,10 +12,12 @@
   "license": "ISC",
   "dependencies": {
     "@babel/preset-react": "^7.22.5",
+    "ejs": "^3.1.9",
     "esbuild": "^0.18.4"
   },
   "devDependencies": {
     "@babel/plugin-transform-modules-commonjs": "^7.22.5",
+    "@babel/types": "^7.22.5",
     "babel-core": "^7.0.0-bridge.0"
   }
 }

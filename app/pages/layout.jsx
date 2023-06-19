@@ -1,6 +1,6 @@
 import Main from "./main"
 
-export default function ROOT ({data}){
+export default function ROOT ({data = {}}={}){
     return (<html lang='en'>
         <head>
             <title>JSX Complier</title>
