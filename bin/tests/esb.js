@@ -1,3 +1,5 @@
+// testing my 'esbuild' plugin
+
 import * as esbuild from 'esbuild'
 import * as path from "node:path"
 import * as fs from 'fs';
@@ -17,19 +19,31 @@ function ls(dir) {
 
 const jsxRuntimeDir = path.join(root, 'bin', 'lib')
 const jsxRuntime = path.join(jsxRuntimeDir, 'jsx-runtime');
+
+let addJSinImports = {
+    name: 'file',
+    setup(build) {
+        console.log("SETUP")
+        const i = {value : 1}
+        build.onLoad({ filter: /.*/ }, args => {
+            console.log(i.value ++ , { args })
+            return { }
+        })
+
+    },
+};
+
 (async () => {
     const files = ls(pagesDir)//.filter(file => file.endsWith('jsx'))
-    // return console.log(files)
-    console.time('buildAsync')
-    // buildin jsx
-    await esbuild.build({
+
+    // transform all jsx files -> ~/.jsx/*.js
+    esbuild.buildSync ({
         entryPoints: files,
         outdir: jsxDir,
         jsxFactory: '_jsx',
         jsxImportSource: jsxRuntimeDir,
         jsx: 'automatic'
     })
-    console.timeEnd('buildAsync')
 
     await esbuild.build({
         entryPoints: ls(jsxDir).filter(file => file.endsWith('.js')),
@@ -40,14 +54,3 @@ const jsxRuntime = path.join(jsxRuntimeDir, 'jsx-runtime');
 })()
 
 
-let addJSinImports = {
-    name: 'file',
-    setup(build) {
-        console.log("SETUP")
-        build.onResolve({ filter: /.*/ }, args => {
-            console.log({ args })
-            return { }
-        })
-
-    },
-}

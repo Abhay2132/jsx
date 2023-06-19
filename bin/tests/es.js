@@ -1,6 +1,4 @@
-// const { transformFile } = require('../lib/esbuild')
-// const path = require('path')
-// const fs = require('fs')
+// test for /lib/esbuild module
 
 import { transform} from "../lib/esbuild.js"
 import * as path from "path"
@@ -10,18 +8,6 @@ const root = path.resolve();
 const layoutFilePath = path.join(root, 'app', 'pages', 'layout.jsx');
 const mainFilePath = path.join(root, 'app', 'pages', 'main.jsx');
 const jsxDir = path.join(root, ".jsx");
-// transformFile(file, null, (err, data) => {
-//     if(err) return console.error({err})
-//     // console.log({data})
-//     const out = path.join(root, '.jsx', 'layout.mjs')
-//     fs.writeFileSync(out, data.code)
-//     import(out)
-//     .then(data =>{
-//         let layout = data.default;
-//         let html = layout();
-//         console.log({html})
-//     })
-// })
 
 (async ()=>{
     const layoutText = fs.readFileSync(layoutFilePath).toString();
