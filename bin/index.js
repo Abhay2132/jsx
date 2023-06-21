@@ -1,21 +1,24 @@
 const esbuild = require('esbuild')
 const path = require("path")
-const { path: root } = module;
+const root = path.resolve();
 const fs = require("fs")
 
 esbuild.buildSync({
     entryPoints: [path.join(root, "app", "pages", "layout.jsx")],
     bundle: true,
     jsxFactory: '_createElement',
-    jsxFragment: 'Fragment',
+    // jsxFragment: 'Fragment',
     outdir: path.join(root, '.jsx'),
-    minify: true,
+    jsx: 'automatic',
+    loader: {'.js': 'jsx'},
+    jsxImportSource: path.join(root, 'bin', 'lib'),
+
+    platform: 'node',
+    target : ['node10.4'],
 })
 
-fs.readFile('./.jsx/layout.js', (err, data)=>{
-    if(err) return console.error(err);
-    
-    let text = data.toString();
-    let component = `const {_createElement} = require('./lib/jsx'); module.exports = ${text.slice(6, -5)}`;
-    console.log({component})
-})
+const {default: layout} = require("../.jsx/layout");
+const html = layout({data: "ABHAY"});
+console.log({html})
+
+// console.log({layout})

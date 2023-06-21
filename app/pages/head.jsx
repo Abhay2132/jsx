@@ -12,5 +12,5 @@ function _head (){
 
 export default function Head (props){
     data = props;
-    return _head.bind(porps);
+    return _head.bind(props);
 }

@@ -61,10 +61,10 @@ function _jsx(name = "", options = {}) {
     return `<${name}${attrStr}>${body}</${name}>`
 }
 
-export const jsx =  _jsx;
-export const jsxs = _jsx;
+// export const jsx =  _jsx;
+// export const jsxs = _jsx;
 
-// module.exports = {
-//     jsx,
-//     jsxs: jsx
-// }
+module.exports = {
+    jsx  : _jsx,
+    jsxs: _jsx
+}
