@@ -1,4 +1,4 @@
-// import "./main.css"
+import "@/sass/main.css"
 
 export default function Main({text, children, data = {}}){
     return (
@@ -14,3 +14,5 @@ export default function Main({text, children, data = {}}){
         </main>
     )
 }
+
+// setTimeout(()=> console.log(cssImports), 1000);

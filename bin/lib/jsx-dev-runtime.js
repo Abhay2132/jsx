@@ -85,6 +85,6 @@ function _jsx(name = "", options = {}) {
 // export const jsxs = _jsx;
 
 module.exports = {
-    jsx  : _jsx,
+    jsxDEV  : _jsx,
     jsxs: _jsx
 }
